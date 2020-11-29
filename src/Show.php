@@ -727,4 +727,22 @@ class Show implements Renderable
     {
         return $this->call($name);
     }
+
+    /**
+     * Set field and label width in current form.
+     *
+     * @param int $fieldWidth
+     * @param int $labelWidth
+     *
+     * @return $this
+     */
+    public function width($fieldWidth = 8, $labelWidth = 2)
+    {
+        $this->fields()->each(function ($field) use ($fieldWidth, $labelWidth) {
+            /* @var Field $field  */
+            $field->width($fieldWidth, $labelWidth);
+        });
+
+        return $this;
+    }
 }
