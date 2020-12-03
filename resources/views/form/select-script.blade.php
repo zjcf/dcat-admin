@@ -5,6 +5,7 @@
     var configs = {!! admin_javascript_json($configs) !!};
 
     @yield('admin.select-ajax')
+    @yield('admin.select-loadFiltered')
 
     @if(isset($remoteOptions))
     $.ajax({!! admin_javascript_json($remoteOptions) !!}).done(function(data) {

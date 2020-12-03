@@ -108,6 +108,30 @@ class Select extends Field
     }
 
     /**
+     * @author hehe
+     * Load Child Selector Url and provide filter parameters by itself
+     *
+     * @param string $field
+     * @param string $sourceUrl
+     * @param string $idField
+     * @param string $textField
+     *
+     * @return $this
+     */
+    public function loadFiltered($field, $sourceUrl, string $idField = 'id', string $textField = 'text')
+    {
+        if (Str::contains($field, '.')) {
+            $field = $this->formatName($field);
+        }
+
+        $class = $this->normalizeElementClass($field);
+
+        $url = admin_url($sourceUrl);
+
+        return $this->addVariables(['loadFiltered' => compact('url', 'class', 'idField', 'textField')]);
+    }
+
+    /**
      * Load options for other selects on change.
      *
      * @param string $fields

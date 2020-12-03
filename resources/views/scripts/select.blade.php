@@ -64,6 +64,53 @@
     @endif
 @overwrite
 
+<script once>
+    @section('admin.select-loadFiltered')
+    @if(isset($loadFiltered))
+    var selector = '{!! $selector !!}';
+
+    $(document).off('change', selector);
+    $(document).on('change', selector, function () {
+      var filted_value = $(this).val()
+      var target = $(this).closest('{{ $loadFiltered['group'] ?? '.fields-group' }}').find('[class*={{ $loadFiltered['class'].'_' }}]');
+      target.find('option').remove();
+      $(target).select2({
+        ajax:{
+          url:"{{ $loadFiltered['url'] }}?_q="+$(this).val(),
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              q: params.term,
+              page: params.page
+            };
+          },
+          processResults: function (data, params) {
+            params.page = params.page || 1;
+
+            return {
+              results: $.map(data.data, function (d) {
+                d.id = d.{{ $loadFiltered['idField'] }};
+                d.text = d.{{ $loadFiltered['textField'] }};
+                return d;
+              }),
+              pagination: {
+                more: data.next_page_url
+              }
+            };
+          },
+          cache: true
+        },
+        escapeMarkup: function (markup) {
+          return markup;
+        }
+      }).val(target.attr('data-value').split(',')).trigger('change');
+    });
+    $(selector).trigger('change')
+    @endif
+    @overwrite
+</script>
+
 @section('admin.select-lang')
 @if (config('app.locale') !== 'en')
     {{--本地化--}}
