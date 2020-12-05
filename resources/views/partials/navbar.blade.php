@@ -1,36 +1,23 @@
 
-<nav class="header-navbar navbar-expand-lg navbar
+<nav class="navbar-expand-lg navbar
     navbar-with-menu {{ $configData['navbar_class'] }}
     {{ $configData['navbar_color'] }}
-        navbar-light navbar-shadow " style="top: 0;">
+        navbar-light" style="top: 0;">
 
-    <div class="navbar-wrapper">
-        <div class="navbar-container content">
-            <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item mr-auto">
-                        <a class="nav-link menu-toggle" data-widget="pushmenu" style="cursor: pointer;">
-                            <i class="fa fa-bars font-md-2"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <a class="navbar-brand" href="#"><span class="fa fa-car"></span>Sky-Car</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <div class="navbar-collapse">
-                <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
-                    {!! Dcat\Admin\Admin::navbar()->render('left') !!}
-                </div>
-                <div class="float-right d-flex align-items-center">
-                    {!! Dcat\Admin\Admin::navbar()->render() !!}
-                </div>
-                <ul class="nav navbar-nav float-right">
-                    {{--User Account Menu--}}
-                    {!! admin_section(Dcat\Admin\Admin::SECTION['NAVBAR_USER_PANEL']) !!}
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav float-right">
+            {{--User Account Menu--}}
+            {!! admin_section(Dcat\Admin\Admin::SECTION['LEFT_SIDEBAR_MENU']) !!}
 
-                    {!! admin_section(Dcat\Admin\Admin::SECTION['NAVBAR_AFTER_USER_PANEL']) !!}
-                </ul>
-            </div>
-        </div>
+            {!! admin_section(Dcat\Admin\Admin::SECTION['NAVBAR_USER_PANEL']) !!}
+
+            {!! admin_section(Dcat\Admin\Admin::SECTION['NAVBAR_AFTER_USER_PANEL']) !!}
+        </ul>
     </div>
 </nav>
 
@@ -46,8 +33,3 @@ results found.</span></div>
         </a>
     </li>
 </ul>
-<script>
-    $('.menu-toggle').on('click', function () {
-        $(this).find('i').toggleClass('icon-circle icon-disc')
-    })
-</script>
