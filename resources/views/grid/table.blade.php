@@ -53,7 +53,9 @@
 
     {!! $grid->renderFooter() !!}
 
-    @include('admin::grid.table-pagination')
+    @if ($grid->allowPagination())
+        @include('admin::grid.table-pagination')
+    @endif
 
 </div>
 
