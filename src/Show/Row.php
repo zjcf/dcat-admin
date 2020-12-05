@@ -143,4 +143,12 @@ class Row implements Renderable
             'element' => $field,
         ]);
     }
+
+    public function html ($html) {
+        $html= (new Html($html))->setParent($this->show);
+
+        $this->pushField($html);
+
+        return $html;
+    }
 }
