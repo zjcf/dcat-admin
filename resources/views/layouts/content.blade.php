@@ -1,17 +1,19 @@
 @section('content-header')
-    <section class="content-header breadcrumbs-top">
-        @if($header || $description)
-            <h1 class=" float-left">
-                <span class="text-capitalize">{!! $header !!}</span>
-                <small>{!! $description !!}</small>
-            </h1>
-        @elseif($breadcrumb || config('admin.enable_default_breadcrumb'))
-            <div>&nbsp;</div>
-        @endif
+    @if (config('dmin.enable_content_header'))
+        <section class="content-header breadcrumbs-top">
+            @if($header || $description)
+                <h1 class=" float-left">
+                    <span class="text-capitalize">{!! $header !!}</span>
+                    <small>{!! $description !!}</small>
+                </h1>
+            @elseif($breadcrumb || config('admin.enable_default_breadcrumb'))
+                <div>&nbsp;</div>
+            @endif
 
-        @include('admin::partials.breadcrumb')
+            @include('admin::partials.breadcrumb')
 
-    </section>
+        </section>
+    @endif
 @endsection
 
 @section('content')
