@@ -1,17 +1,16 @@
 @php
     $active = $builder->isActive($item);
-
     $depth = $item['depth'] ?? 0;
 @endphp
 
 @if($builder->visible($item))
     @if(empty($item['children']))
-        <li class="nav-item">
-            <a @if(mb_strpos($item['uri'], '://') !== false) target="_blank" @endif href="{{ $builder->getUrl($item['uri']) }}" class="nav-link {!! $builder->isActive($item) ? 'active' : '' !!}">
+        <li class="nav-item" style="line-height: 30px;font-size:20px;padding:5px 20px;">
+            <a @if(mb_strpos($item['uri'], '://') !== false) target="_blank" @endif href="{{ $builder->getUrl($item['uri']) }}"
+               style="color:#000000"
+               class="nav-link {!! $builder->isActive($item) ? 'active' : '' !!}">
                 {!! str_repeat('&nbsp;', $depth) !!}<i class="fa {{ $item['icon'] ?: 'feather icon-circle' }}"></i>
-                <p>
                     {{ $builder->translate($item['title']) }}
-                </p>
             </a>
         </li>
     @else
@@ -19,23 +18,24 @@
             $active = $builder->isActive($item);
         @endphp
 
-        <li class="nav-item has-treeview {{ $active ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link">
+        <li class="nav-item dropdown" style="line-height: 30px;font-size:20px;padding:5px 20px;">
+            <a href="#" class="nav-link dropdown-toggle  {!! $builder->isActive($item) ? 'active' : '' !!}"
+               style="color:#000000"
+               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {!! str_repeat('&nbsp;', $depth) !!}<i class="fa {{ $item['icon'] ?: 'feather icon-circle' }}"></i>
-                <p>
-                    {{ $builder->translate($item['title']) }}
-                    <i class="right fa fa-angle-left"></i>
-                </p>
+                {{ $builder->translate($item['title']) }}
             </a>
-            <ul class="nav nav-treeview">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 @foreach($item['children'] as $item)
                     @php
                         $item['depth'] = $depth + 1;
                     @endphp
-
-                    @include('admin::partials.menu', $item)
+                    <a @if(mb_strpos($item['uri'], '://') !== false) target="_blank" @endif href="{{ $builder->getUrl($item['uri']) }}" class="nav-link {!! $builder->isActive($item) ? 'active' : '' !!}">
+                        {!! str_repeat('&nbsp;', $depth) !!}<i class="fa {{ $item['icon'] ?: 'feather icon-circle' }}"></i>
+                            {{ $builder->translate($item['title']) }}
+                    </a>
                 @endforeach
-            </ul>
+            </div>
         </li>
     @endif
 @endif
