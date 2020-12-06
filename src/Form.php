@@ -95,6 +95,7 @@ class Form implements Renderable
     use Concerns\HandleCascadeFields;
     use Concerns\HasRows;
     use Concerns\HasTabs;
+    use Concerns\HasScripts;
     use Macroable {
             __call as macroCall;
         }
