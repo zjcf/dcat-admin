@@ -157,7 +157,7 @@ class Admin
      */
     public static function disablePjax()
     {
-        static::context()->pjaxContainerId = false;
+        static::context()->pjaxContainerId = "pjax_container_disabled";
     }
 
     /**
