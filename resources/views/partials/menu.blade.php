@@ -5,7 +5,7 @@
 
 @if($builder->visible($item))
     @if(empty($item['children']))
-        <li class="nav-item" style="line-height: 30px;font-size:20px;padding:5px 20px;">
+        <li class="nav-item" style="line-height: 30px;font-size:15px;padding:5px 10px;">
             <a @if(mb_strpos($item['uri'], '://') !== false) target="_blank" @endif href="{{ $builder->getUrl($item['uri']) }}"
                style="color:#000000"
                class="nav-link {!! $builder->isActive($item) ? 'active' : '' !!}">
@@ -18,7 +18,7 @@
             $active = $builder->isActive($item);
         @endphp
 
-        <li class="nav-item dropdown" style="line-height: 30px;font-size:20px;padding:5px 20px;">
+        <li class="nav-item dropdown" style="line-height: 30px;font-size:15px;padding:5px 10px;">
             <a href="#" class="nav-link dropdown-toggle  {!! $builder->isActive($item) ? 'active' : '' !!}"
                style="color:#000000"
                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
