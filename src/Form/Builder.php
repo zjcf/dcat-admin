@@ -824,6 +824,12 @@ EOF;
         return "<div class='card'>{$view->render()}</div>";
     }
 
+    protected function savedScript () {
+    }
+
+    protected function errorScript () {
+    }
+
     /**
      * @return void
      */
@@ -838,6 +844,12 @@ $('#{$this->getElementId()}').form({
     validate: true,
     confirm: {$confirm},
     validationErrorToastr: $toastr,
+    success: function (data) {
+        {$this->form->savedScript()}
+    },
+    error: function (response) {
+        {$this->form->errorScript()}
+    },
 });
 JS
         );

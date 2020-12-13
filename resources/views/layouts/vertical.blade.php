@@ -9,7 +9,9 @@
     {!! admin_section(Dcat\Admin\Admin::SECTION['BODY_INNER_BEFORE']) !!}
 
     <div class="wrapper">
+        @if(false)
         @include('admin::partials.sidebar')
+        @endif
 
         @include('admin::partials.navbar')
 

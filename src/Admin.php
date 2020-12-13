@@ -157,7 +157,7 @@ class Admin
      */
     public static function disablePjax()
     {
-        static::context()->pjaxContainerId = "pjax_container_disabled";
+        static::context()->pjaxContainerId = false;
     }
 
     /**
@@ -421,7 +421,8 @@ class Admin
 
         $sidebarStyle = config('admin.layout.sidebar_style') ?: 'light';
 
-        $jsVariables['pjax_container_selector'] = '#'.static::getPjaxContainerId();
+        $pjaxContainerId = static::getPjaxContainerId();
+        $jsVariables['pjax_container_selector'] = $pjaxContainerId ? '#'.$pjaxContainerId : '#pjax_container_disabled';
         $jsVariables['token'] = csrf_token();
         $jsVariables['lang'] = __('admin.client') ?: [];
         $jsVariables['colors'] = static::color()->all();
