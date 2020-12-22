@@ -145,6 +145,10 @@ class Tree extends Field
                 $parentIds[] = $parentId;
             }
 
+            if(isset($v['node_type']) && $v['node_type'] === 'category'){
+                $parentIds[] = $v[$idColumn];
+            }
+
             $v['state'] = [];
 
             if ($value && in_array($v[$idColumn], $value)) {
