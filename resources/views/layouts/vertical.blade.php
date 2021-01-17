@@ -22,6 +22,7 @@
         </div>
     </div>
 
+    <!--
     <footer class="main-footer pt-1">
         <p class="clearfix blue-grey lighten-2 mb-0 text-center">
             <span class="text-center d-block d-md-inline-block mt-25">
@@ -36,6 +37,7 @@
             </button>
         </p>
     </footer>
+    -->
 
     {!! admin_section(Dcat\Admin\Admin::SECTION['BODY_INNER_AFTER']) !!}
 
