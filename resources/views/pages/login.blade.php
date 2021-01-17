@@ -24,7 +24,7 @@
 <div class="login-page bg-40">
     <div class="login-box">
         <div class="login-logo mb-2">
-            {{ config('admin.name') }}
+            {!! config('admin.logo') !!}
         </div>
         <div class="card">
             <div class="card-body login-card-body shadow-100">
