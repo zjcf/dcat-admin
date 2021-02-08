@@ -120,6 +120,7 @@
         </div>
     </div>
 </div>
+{!! config('admin.login_footer') !!}
 
 <script>
 Dcat.ready(function () {
