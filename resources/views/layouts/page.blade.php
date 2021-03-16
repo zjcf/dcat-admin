@@ -23,6 +23,8 @@
     {!! Dcat\Admin\Admin::asset()->headerJsToHtml() !!}
 
     {!! Dcat\Admin\Admin::asset()->cssToHtml() !!}
+
+    <link rel="stylesheet" href="/css/dcat.override.css"></link>
 </head>
 
 @extends('admin::layouts.vertical')
