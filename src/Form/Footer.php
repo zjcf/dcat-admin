@@ -2,6 +2,7 @@
 
 namespace Dcat\Admin\Form;
 
+use Closure;
 use Dcat\Admin\Widgets\Checkbox;
 use Illuminate\Contracts\Support\Renderable;
 
@@ -154,6 +155,10 @@ class Footer implements Renderable
      */
     public function render()
     {
+        if ($this->callback instanceof Closure) {
+            return $this->callback->call($this);
+        }
+
         $data = [
             'buttons'    => $this->buttons,
             'checkboxes' => $this->buildCheckboxes(),
@@ -161,5 +166,11 @@ class Footer implements Renderable
         ];
 
         return view($this->view, $data)->render();
+    }
+
+    protected $callback;
+
+    public function with (Closure $callback) {
+        $this->callback = $callback;
     }
 }

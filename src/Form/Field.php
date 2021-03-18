@@ -883,6 +883,13 @@ class Field implements Renderable
         return $this;
     }
 
+    public function enableHorizontal()
+    {
+        $this->horizontal = true;
+
+        return $this;
+    }
+
     /**
      * @return array
      */
